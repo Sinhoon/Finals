@@ -18,7 +18,7 @@ public class CalendarEventDb extends SQLiteOpenHelper
     {
         private Long ID;
         private String details;
-        private Long daySinceAugustFirst_2016; //how we order events in table
+        private Long daySinceAugustFirst_2016; 
 
         public void setDetails(String newDetails) {details = newDetails;}
         public String getDetails() {return details;}
@@ -30,15 +30,14 @@ public class CalendarEventDb extends SQLiteOpenHelper
         public void setDaySinceAugustFirst_2016(Long newValue) {daySinceAugustFirst_2016 = newValue;}
     }
 
-    private SQLiteDatabase rdb; //readable database (for fetching values)
-    private SQLiteDatabase wdb; //writable database (for editing values)
-	public static final int DATABASE_VER = 1; //arbitrary database version representation: to be incremented to prevent conflict issues
+    private SQLiteDatabase rdb; 
+    private SQLiteDatabase wdb; 
+	public static final int DATABASE_VER = 1; 
 	private static final String DATABASE_NAME = "CalendarEventTable.db";
     private Calendar timeCalendar;
     private class CalendarEventTable implements BaseColumns
     {
-        //IMPLIED Property _ID returns unique ID of object in database for direct reference
-        static final String Table_Name = "Event";
+        
         static final String Column_Details = "Details";
         static final String Column_Date = "Date";
     }
@@ -114,7 +113,7 @@ public class CalendarEventDb extends SQLiteOpenHelper
                 returnCalendarEvent.setDaySinceAugustFirst_2016(searchContainer.getLong(1));
                 if(returnCalendarEvent != null)
                     return returnCalendarEvent;
-                else //something wrong happened at this point, likely object or table corrupted
+                else
                     return null;
             }
             else
