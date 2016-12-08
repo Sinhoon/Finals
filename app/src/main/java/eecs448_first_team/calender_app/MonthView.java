@@ -35,7 +35,7 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
             TextView textview = (TextView) findViewById(R.id.monthName);
             textview.setText(getMonth(array[1]));
         }
-        if(array[3] != 0 && array[5] != 0) // if array contains the day of the 1st of the month and the number of days in the month, fill out the xml
+        if(array[3] != 0 && array[5] != 0) 
         {
             fillMonth(array[3], array[5]);
         }
@@ -53,23 +53,23 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
             }
             case (R.id.firstWeek):
             {
-                if(array[3] == 1) // if 1st day of month is Sunday
+                if(array[3] == 1) 
                 {
-                    array[4] = 1; // the date of Sunday is the 1st
+                    array[4] = 1;
                 }
-                else if(array[6] == 31) // if the previous month had 31 days (the previous month is in the first week)
+                else if(array[6] == 31) 
                 {
-                    array[4] = 33-array[3]; // the date of Sunday is 33-(date of the 1st of the month)
+                    array[4] = 33-array[3]; 
                 }
-                else if(array[6] == 30) // if the previous month had 30 days (the previous month is in the first week)
+                else if(array[6] == 30) 
                 {
-                    array[4] = 32-array[3]; // the date of Sunday is 32-(date of the 1st of the month)
+                    array[4] = 32-array[3];
                 }
-                else if(array[6] == 28) // if February was the previous month
+                else if(array[6] == 28)
                 {
-                    array[4] = 30-array[3]; // the date of Sunday is 30-(date of the 1st of the month)
+                    array[4] = 30-array[3]; 
                 }
-                array[7] = 1; // this is the first week
+                array[7] = 1; 
                 Intent goToWeek = new Intent(this, WeekView.class);
                 goToWeek.putExtra(DATA, array);
                 startActivity(goToWeek);
@@ -113,7 +113,7 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
             }
             case(R.id.thirdWeek):
             {
-                //See previous cases
+
                 if(array[3] == 1)
                 {
                     array[4] = 15;
@@ -142,7 +142,7 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
                 {
                     array[4] = 9;
                 }
-                array[7] = 3; // this is the third week
+                array[7] = 3; 
                 Intent goToWeek = new Intent(this, WeekView.class);
                 goToWeek.putExtra(DATA, array);
                 startActivity(goToWeek);
@@ -150,7 +150,7 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
             }
             case(R.id.fourthWeek):
             {
-                //See previous cases
+         
                 if(array[3] == 1)
                 {
                     array[4] = 22;
@@ -216,7 +216,7 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
                 {
                     array[4] = 23;
                 }
-                array[7] = 5; // this is the fifth week
+                array[7] = 5; 
                 Intent goToWeek = new Intent(this, WeekView.class);
                 goToWeek.putExtra(DATA, array);
                 startActivity(goToWeek);
@@ -224,18 +224,18 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
             }
             case(R.id.sixthWeek):
             {
-                if(array[3] == 6 && array[5] == 31) // if the 1st day of the month was Friday and there are 31 days in the month
+                if(array[3] == 6 && array[5] == 31) 
                 {
-                    array[4] = 31; // Sunday will be the 31st
-                    array[7] = 6; // this is the sixth week
+                    array[4] = 31;
+                    array[7] = 6; 
                     Intent goToWeek = new Intent(this, WeekView.class);
                     goToWeek.putExtra(DATA, array);
                     startActivity(goToWeek);
                 }
-                else if(array[3] == 7 && array[5] >= 30) // if the 1st day of the month was Saturday and there are at least 30 days in the month
+                else if(array[3] == 7 && array[5] >= 30) 
                 {
-                    array[4] = 30; // Sunday will be the 30th
-                    array[7] = 6; // this is the sixth week
+                    array[4] = 30; 
+                    array[7] = 6; 
                     Intent goToWeek = new Intent(this, WeekView.class);
                     goToWeek.putExtra(DATA, array);
                     startActivity(goToWeek);
@@ -298,7 +298,7 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
     public void fillMonth(int start, int end)
     {
 
-        if(start == 1) // if Sunday was the 1st day of the month
+        if(start == 1) 
         {
             TextView t = (TextView) findViewById(R.id.w11);
             t.setText("01");
@@ -569,20 +569,20 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
             t.setText("27");
             t = (TextView) findViewById(R.id.w53);
             t.setText("28");
-            if(end != 28) // if more than 28 days in the month
+            if(end != 28) 
             {
                 t = (TextView) findViewById(R.id.w54);
                 t.setText("29");
                 t = (TextView) findViewById(R.id.w55);
                 t.setText("30");
-                if (end == 31)  // if more than 30 days in the month
+                if (end == 31)  
                 {
                     t = (TextView) findViewById(R.id.w56);
                     t.setText("31");
                 }
             }
         }
-        else if(start == 5)  // if Thursday was the 1st of the month
+        else if(start == 5)  
         {
             TextView t = (TextView) findViewById(R.id.w15);
             t.setText("01");
@@ -640,20 +640,20 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
             t.setText("27");
             t = (TextView) findViewById(R.id.w54);
             t.setText("28");
-            if(end != 28) // if more than 28 days in the month
+            if(end != 28) 
             {
                 t = (TextView) findViewById(R.id.w55);
                 t.setText("29");
                 t = (TextView) findViewById(R.id.w56);
                 t.setText("30");
-                if (end == 31)  // if more than 30 days in the month
+                if (end == 31)  
                 {
                     t = (TextView) findViewById(R.id.w57);
                     t.setText("31");
                 }
             }
         }
-        else if(start == 6) // if Friday was the 1st of the month
+        else if(start == 6) 
         {
             TextView t = (TextView) findViewById(R.id.w16);
             t.setText("01");
@@ -782,13 +782,13 @@ public class MonthView extends AppCompatActivity implements View.OnClickListener
             t.setText("27");
             t = (TextView) findViewById(R.id.w56);
             t.setText("28");
-            if(end != 28) // if more than 28 days in the month
+            if(end != 28) 
             {
                 t = (TextView) findViewById(R.id.w57);
                 t.setText("29");
                 t = (TextView) findViewById(R.id.w61);
                 t.setText("30");
-                if (end == 31)  // if more than 30 days in the month
+                if (end == 31)  
                 {
                     t = (TextView) findViewById(R.id.w62);
                     t.setText("31");
