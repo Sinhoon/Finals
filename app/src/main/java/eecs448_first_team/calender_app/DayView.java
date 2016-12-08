@@ -32,17 +32,17 @@ public class DayView extends AppCompatActivity implements View.OnClickListener {
     {
         super.onResume();
         theDatabase = new CalendarEventDb(this);
-        dateToMillisecondsInterpreter = Calendar.getInstance(); //configures the calendar to get current time in MS of your corresponding day
-        dateToMillisecondsInterpreter.set(Calendar.HOUR,0); //locks hours,minutes,seconds,MS in Calendar to 0 to make consistent, and so we don't have to zero them again later
-        dateToMillisecondsInterpreter.set(Calendar.MINUTE,0); //thus, I can say with certainty that using the Calendar to convert 9-21-2016 to milliseconds will produce a constant value
+        dateToMillisecondsInterpreter = Calendar.getInstance(); 
+        dateToMillisecondsInterpreter.set(Calendar.HOUR,0); 
+        dateToMillisecondsInterpreter.set(Calendar.MINUTE,0); 
         dateToMillisecondsInterpreter.set(Calendar.SECOND,0);
         dateToMillisecondsInterpreter.set(Calendar.MILLISECOND,0);
         dateToMillisecondsInterpreter.set(Calendar.DAY_OF_MONTH,array[0]);
-        if(array[7] == 1 && array[0] > 7) // if Week 1 and day is from the previous month
+        if(array[7] == 1 && array[0] > 7) 
         {
             dateToMillisecondsInterpreter.set(Calendar.MONTH,array[1] - 1);
         }
-        else if(array[7] > 4 && array[0] < 23) // if Week 5 or 6 and day is from the next month
+        else if(array[7] > 4 && array[0] < 23) 
         {
             dateToMillisecondsInterpreter.set(Calendar.MONTH,array[1] + 1);
         }
@@ -88,7 +88,7 @@ public class DayView extends AppCompatActivity implements View.OnClickListener {
             case(R.id.addDetailsButton):
             {
                 Intent goToDetails = new Intent(this, AddDetails.class);
-                goToDetails.putExtra(DATA, array); //TODO: do we pass array into details?
+                goToDetails.putExtra(DATA, array); 
                 startActivity(goToDetails);
                 break;
             }
@@ -98,11 +98,11 @@ public class DayView extends AppCompatActivity implements View.OnClickListener {
     public void fillDate()
     {
         TextView t = (TextView) findViewById(R.id.date);
-        if(array[7] == 1 && array[0] > 7) // if Week 1 and day is from the previous month
+        if(array[7] == 1 && array[0] > 7) 
         {
             t.setText(getMonth(array[1]-1) + array[0] + ", " + array[2]);
         }
-        else if(array[7] > 4 && array[0] < 23) // if Week 5 or 6 and day is from the next month
+        else if(array[7] > 4 && array[0] < 23) 
         {
             t.setText(getMonth(array[1]+1) + array[0] + ", " + array[2]);
         }
