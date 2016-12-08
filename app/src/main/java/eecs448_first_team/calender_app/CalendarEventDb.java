@@ -95,13 +95,13 @@ public class CalendarEventDb extends SQLiteOpenHelper
         try
         {
             Cursor searchContainer = rdb.query(
-                    CalendarEventTable.Table_Name, //query the CalendarEventTable
-                    PARAMETERS_TABLE_RETURN_COLUMNS, //give me ID, Date, and Details columns that...
-                    CalendarEventTable.Column_Date + "=?", //... that looking at the date column...
-                    searchArgs, //... it matches the date I gave
-                    null, //don't group rows
-                    null, //don't filter by row groups
-                    CalendarEventTable.Column_Date //sort by date first (assume ascending order)
+                    CalendarEventTable.Table_Name, 
+                    PARAMETERS_TABLE_RETURN_COLUMNS, .
+                    CalendarEventTable.Column_Date + "=?",
+                    searchArgs, 
+                    null,
+                    null,
+                    CalendarEventTable.Column_Date 
             );
 
             if(searchContainer.getCount() >= 1)
